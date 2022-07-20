@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+/**
+ * From https://marmelab.com/blog/2021/07/22/cra-webpack-no-eject.html
+ *
+ * This builds a widget version of
+ */
+const path = require("path");
+const rewire = require("rewire");
+
+// Override weboack config to compile as a library
+const defaults = rewire("react-scripts/scripts/build.js");
+const config = defaults.__get__("config");
+
+console.log(config.entry);
+config.entry = path.resolve(__dirname, "../src/widget.tsx");
+config.output = {
+  path: path.resolve(__dirname, "../build-widget"),
+  library: "BraSizeWidget",
+  libraryTarget: "umd",
+  umdNamedDefine: true,
+};
+// Override the default html file to use widget
+config.plugins[0].userOptions.template = path.resolve(
+  __dirname,
+  "../public/widget-sample.html"
+);
+config.plugins[0].userOptions.scriptLoading = "blocking";
+config.plugins[0].userOptions.inject = "head";
