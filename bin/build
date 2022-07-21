@@ -12,7 +12,6 @@ const rewire = require("rewire");
 const defaults = rewire("react-scripts/scripts/build.js");
 const config = defaults.__get__("config");
 
-console.log(config.entry);
 config.entry = path.resolve(__dirname, "../src/widget.tsx");
 config.output = {
   path: path.resolve(__dirname, "../build-widget"),
