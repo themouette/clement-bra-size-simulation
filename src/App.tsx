@@ -1,83 +1,55 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./App.css";
-import {
-  computeAsymetricCupSize,
-  computeCupSize,
-  computeNormalizedWaistSize,
-} from "./lib/bra-size";
-import { AppState, useAppState } from "./useAppState";
-
-const useCupSize = ({ isAsymetric, waistSize, chestSize }: AppState) => {
-  let hasError = false;
-  let cupSize = "";
-  try {
-    cupSize = isAsymetric
-      ? computeAsymetricCupSize(waistSize, chestSize)
-      : computeCupSize(waistSize, chestSize);
-  } catch (e) {
-    hasError = true;
-  }
-
-  return [hasError, cupSize];
-};
-const useNormalizedWaistSize = (waistSize: number) => {
-  let hasError = false;
-  let normalizedWaistSize = "";
-  try {
-    normalizedWaistSize = computeNormalizedWaistSize(waistSize);
-  } catch (e) {
-    hasError = true;
-  }
-
-  return [hasError, normalizedWaistSize];
-};
-const parseNumberInput = (value: string) => parseFloat(value.replace(",", "."));
+import { useAppState } from "./lib/use-app-state";
+import { ChestForm } from "./ChestForm";
+import { UnderwareTypeSelector } from "./UnderwareTypeSelector";
+import { UnderwareType } from "./lib/types";
+import { PantForm } from "./PantForm";
+import { AsymetricChestForm } from "./AsymetricChestForm";
 
 function App() {
-  const [appState, { toggleIsAsymetric, setWaistSize, setChestSize }] =
-    useAppState();
+  const [appState, appStateActions] = useAppState();
+  const [underwareType, setUnderwareType] = React.useState<UnderwareType>();
 
-  const [hasCupSizeError, cupSize] = useCupSize(appState);
-  const [hasNormalizedWaistSizeError, normalizedWaistSize] =
-    useNormalizedWaistSize(appState.waistSize);
+  const backToMenu = useCallback(() => setUnderwareType(undefined), []);
 
   return (
     <div className="App">
-      <label>
-        Tour de taille:
-        <input
-          type="number"
-          value={appState.waistSize}
-          onChange={({ target: { value } }) =>
-            setWaistSize(parseNumberInput(value))
-          }
+      {
+        /*
+         * When there is a type selected, for now let's render nothing
+         * it will be te subcomponent responsibility to render back button
+         */ !underwareType && (
+          <UnderwareTypeSelector
+            underwareType={underwareType}
+            setUnderwareType={setUnderwareType}
+          />
+        )
+      }
+      {underwareType === "bra" && !appState.isAsymetric && (
+        <ChestForm
+          appState={appState}
+          actions={appStateActions}
+          backToMenu={backToMenu}
         />
-      </label>
-      <label>
-        Tour de poitrine:
-        <input
-          type="number"
-          value={appState.chestSize}
-          onChange={({ target: { value } }) =>
-            setChestSize(parseNumberInput(value))
-          }
+      )}
+      {underwareType === "bra" && appState.isAsymetric && (
+        <AsymetricChestForm
+          appState={appState}
+          actions={appStateActions}
+          backToMenu={backToMenu}
         />
-      </label>
+      )}
+      {underwareType === "pants" && (
+        <PantForm
+          appState={appState}
+          actions={appStateActions}
+          backToMenu={backToMenu}
+        />
+      )}
       <div>
-        {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
-        {hasCupSizeError ? "Bonnet inconnu" : cupSize}
+        {appState.breastSize} - {appState.chestSize}
       </div>
-      <div>
-        {appState.waistSize} - {appState.chestSize}
-      </div>
-      <label>
-        <input
-          type="checkbox"
-          checked={appState.isAsymetric}
-          onChange={toggleIsAsymetric}
-        />
-        J'ai une poitrine asymétrique
-      </label>
     </div>
   );
 }

@@ -1,0 +1,33 @@
+.ToggleButton {
+    --active-bg-color: #000;
+    --active-text-color: #0F0;
+    --inactive-bg-color: #FFF;
+    --inactive-text-color: #F00;
+}
+
+.ToggleButton {}
+
+.ToggleButton .ToggleButton_btn {
+    border: 3px solid #1a1a1a;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    transition: background 600ms ease, color 600ms ease;
+}
+.ToggleButton .ToggleButton_btn--is-active {
+    background: var(--active-bg-color);
+    color: var(--active-text-color);
+    font-weight: bold;
+}
+.ToggleButton .ToggleButton_btn--is-inactive {
+    background: var(--inactive-bg-color);
+    color: var(--inactive-text-color);
+}
+.ToggleButton .ToggleButton_on {
+
+}
+.ToggleButton .ToggleButton_on {
+
+}
+

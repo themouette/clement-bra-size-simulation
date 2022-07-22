@@ -1,7 +1,7 @@
-type CupLetter = "A" | "B" | "C" | "D" | "E";
-type WaistSize = string;
+import { BreastSize, CupLetter } from "./types";
+
 interface CupSizeDefinition {
-  [waistSize: WaistSize]: Array<{
+  [waistSize: BreastSize]: Array<{
     /** Min number in the interval */
     min: number;
     /** Max number in the interval */
@@ -62,7 +62,7 @@ const cupSizesDefinition: CupSizeDefinition = {
   ],
 };
 
-const normalizedWaistDefinition = [
+const normalizedBreastSizeDefinition = [
   { min: 63, max: 67, size: "80" },
   { min: 67, max: 72, size: "85" },
   { min: 72, max: 77, size: "90" },
@@ -117,7 +117,7 @@ export const computeCupSize = (waistSize: number, chestSize: number) => {
 };
 
 export const computeNormalizedWaistSize = (waistSize: number) => {
-  const normalizedWaistSize = normalizedWaistDefinition.find(
+  const normalizedWaistSize = normalizedBreastSizeDefinition.find(
     ({ min, max }) => waistSize < max && waistSize >= min
   );
   if (!normalizedWaistSize) {
