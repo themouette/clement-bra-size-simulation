@@ -23,7 +23,7 @@ function App(_: AppProps) {
         isOneLine
         onChange={appStateActions.setBreastSize}
       />
-      <p className={`${BLOCK}_help-text`}>
+      <p className={`${BLOCK}_help-text ${BLOCK}_help-text--space-bottom`}>
         Placez votre mètre ruban juste en-dessous de votre poitrine, faites le
         tour sans serrer trop fort, le ruban doit être droit au dos.
       </p>
