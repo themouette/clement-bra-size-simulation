@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Release current package in gh-pages
+
+# Log all the outputs to syslog and preserve the standard output.
+# see https://urbanautomaton.com/blog/2014/09/09/redirecting-bash-script-output-to-syslog/
+#exec 1> >(logger -s -t $(basename $0)) 2>&1
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+################################################################################
+# Program main function
+# Globals:
+#   None
+# Arguments:
+#   None
+# Returns
+#   None
+################################################################################
+function main {
+    GIT_ROOT=`git rev-parse --show-toplevel`
+    GIT_REMOTE_URL=`git config --get remote.origin.url`
+
+    RELEASE_DIR="${GIT_ROOT}/build-widget"
+
+    # Go to build dir
+    cd "${RELEASE_DIR}"
+    # create git repo
+    if [[ ! -d '.git' ]]; then
+        git init -b gh-pages
+        git remote add origin "${GIT_REMOTE_URL}"
+    fi
+    git add .
+    git commit -m "Release $(date '+%F-%H-%m%s')"
+    git push -f origin gh-pages
+}
+
+main "$@"
