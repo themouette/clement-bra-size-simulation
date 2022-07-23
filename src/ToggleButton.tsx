@@ -10,7 +10,7 @@ export interface ToggleButtonProps {
 const BLOCK = "ToggleButton";
 
 const activeClassName = (isActive: boolean) =>
-  isActive ? `${BLOCK}_btn--is-active` : `${BLOCK}_btn--is-inactive`;
+  isActive ? `${BLOCK}_button--is-active` : `${BLOCK}_button--is-inactive`;
 
 export const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
   isActive,
@@ -21,13 +21,13 @@ export const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
   return (
     <div className={BLOCK}>
       <button
-        className={`${BLOCK}_btn ${BLOCK}_off ${activeClassName(!isActive)}`}
+        className={`${BLOCK}_button ${activeClassName(!isActive)}`}
         onClick={() => isActive && onToggle(false)}
       >
         {labelOff}
       </button>
       <button
-        className={`${BLOCK}_btn ${BLOCK}_on ${activeClassName(isActive)}`}
+        className={`${BLOCK}_button ${activeClassName(isActive)}`}
         onClick={() => !isActive && onToggle(true)}
       >
         {labelOn}

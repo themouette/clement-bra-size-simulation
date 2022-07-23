@@ -1,13 +1,17 @@
+.InputNumber, .InputNumber input {
+    font-size: 1.5rem;
+}
 .InputNumber .InputNumber_lqbel {
     display: block;
 }
 .InputNumber .InputNumber_input-container {
     display: flex;
+    align-items: baseline;
 }
 .InputNumber .InputNumber_input {
     flex: 1 1 auto;
     min-width: 10px;
-    padding: 2px;
+    padding: 10px;
 }
 .InputNumber .InputNumber_input-suffix {
     flex: 0 0 auto;

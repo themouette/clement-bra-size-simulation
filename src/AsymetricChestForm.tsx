@@ -2,13 +2,12 @@ import { AppState, AppStateActions } from "./lib/use-app-state";
 import React from "react";
 import { useCupSize } from "./lib/use-cup-size";
 import { useNormalizedWaistSize } from "./lib/use-normalized-waist-size";
+import { Result } from "./Result";
 
 export interface AsymetricChestFormProps {
   appState: AppState;
   actions: AppStateActions;
 }
-
-const BLOCK = "AsymetricChestForm";
 
 export const AsymetricChestForm: React.FunctionComponent<
   AsymetricChestFormProps
@@ -27,10 +26,10 @@ export const AsymetricChestForm: React.FunctionComponent<
     useNormalizedWaistSize(breastSize);
 
   return (
-    <div className={BLOCK}>
+    <Result>
       {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
       {hasLeftCupSizeError ? "Bonnet inconnu" : leftCupSize}
       {hasRightCupSizeError ? "Bonnet inconnu" : rightCupSize}
-    </div>
+    </Result>
   );
 };

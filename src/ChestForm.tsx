@@ -2,6 +2,7 @@ import { AppState, AppStateActions } from "./lib/use-app-state";
 import React from "react";
 import { useCupSize } from "./lib/use-cup-size";
 import { useNormalizedWaistSize } from "./lib/use-normalized-waist-size";
+import { Result } from "./Result";
 
 export interface ChestFormProps {
   appState: AppState;
@@ -20,11 +21,9 @@ export const ChestForm: React.FunctionComponent<ChestFormProps> = ({
     useNormalizedWaistSize(breastSize);
 
   return (
-    <div>
-      <div>
-        {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
-        {hasCupSizeError ? "Bonnet inconnu" : cupSize}
-      </div>
-    </div>
+    <Result>
+      {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
+      {hasCupSizeError ? "Bonnet inconnu" : cupSize}
+    </Result>
   );
 };

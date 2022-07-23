@@ -20,10 +20,6 @@ export interface AppState {
    * Only for asymetric chests
    */
   rightHalfChestSize: number;
-  /**
-   * Customer hips size
-   */
-  hipsSize: number;
 }
 
 export interface AppStateActions {
@@ -33,7 +29,6 @@ export interface AppStateActions {
   setChestSize: (size: number) => void;
   setLeftHalfChestSize: (size: number) => void;
   setRightHalfChestSize: (size: number) => void;
-  setHipsSize: (size: number) => void;
 }
 
 export const useAppState = (): [AppState, AppStateActions] => {
@@ -43,7 +38,6 @@ export const useAppState = (): [AppState, AppStateActions] => {
     chestSize: 85,
     leftHalfChestSize: 44,
     rightHalfChestSize: 44,
-    hipsSize: 87,
   });
 
   return [
@@ -79,12 +73,6 @@ export const useAppState = (): [AppState, AppStateActions] => {
           setAppState((previousState) => ({
             ...previousState,
             rightHalfChestSize: size,
-          }));
-        },
-        setHipsSize: (size) => {
-          setAppState((previousState) => ({
-            ...previousState,
-            hipsSize: size,
           }));
         },
       }),

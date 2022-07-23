@@ -1,12 +1,10 @@
 .App {
-    padding: 16px;
-}
+    color: var(--text-color);
+    background: var(--background-color);
+    border-color: var(--border-color);
+    font: var(--font-body);
 
-.App_image-header {
-    margin: auto;
-    max-width: 250px;
-    display: block;
-    width: 100%;
+    padding: 16px;
 }
 
 .App_cup-size-form {
@@ -25,6 +23,6 @@
 }
 
 .App_help-text {
-    font-size: .7rem;
+    font-size: .8rem;
     font-style: italic;
 }
