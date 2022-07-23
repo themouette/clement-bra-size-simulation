@@ -10,6 +10,7 @@
     flex: 1 1 100%;
 }
 .InputNumber .InputNumber_input-container {
+    flex: 1 1 auto;
     display: flex;
     align-items: baseline;
 }
