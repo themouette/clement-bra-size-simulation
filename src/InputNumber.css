@@ -13,6 +13,7 @@
     flex: 1 1 auto;
     display: flex;
     align-items: baseline;
+    width: 100%;
 }
 /* A wrapper is needed to allow the input to shrink */
 .InputNumber .InputNumber_input-wrapper {
@@ -45,5 +46,8 @@
         white-space: nowrap;
         flex: 0 1 auto;
         padding-right: 1rem;
+    }
+    .InputNumber_one-line-wrapper--is-one-line .InputNumber_input-container {
+        width: auto;
     }
 }
