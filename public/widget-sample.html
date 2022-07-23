@@ -21,14 +21,18 @@
         <title>Widget sample</title>
     </head>
     <body>
-        <div id="root"></div>
+        <div id="calculateur"></div>
+        <style>
+            #calculateur {
+                --background-color: #5D6BC3;
+                --text-color: #fff;
+                --border-color: #fff;
+                --font-title: normal normal normal 20px/1.67em dancingscript-regular,'dancing script',cursive;
+                --font-body: normal normal normal 15px/1.875em avenir-lt-w01_35-light1475496,avenir-lt-w05_35-light,sans-serif
+            }
+        </style>
         <script>
-            BraSizeWidget.init('root', {
-                imageBraUrl: '../public/explanation-bra.png',
-                imagePantUrl: '../public/explanation-pant.png',
-                iconBraUrl: '../public/icon-bra.png',
-                iconPantUrl: '../public/icon-pant.png'
-            })
+            BraSizeWidget.init('calculateur');
         </script>
     </body>
 </html>
