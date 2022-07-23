@@ -35,9 +35,9 @@ export const useAppState = (): [AppState, AppStateActions] => {
   const [appState, setAppState] = useState<AppState>({
     isAsymetric: false,
     breastSize: 80,
-    chestSize: 85,
-    leftHalfChestSize: 44,
-    rightHalfChestSize: 44,
+    chestSize: 93,
+    leftHalfChestSize: 46,
+    rightHalfChestSize: 48,
   });
 
   return [

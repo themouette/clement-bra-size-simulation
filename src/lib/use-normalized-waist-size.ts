@@ -1,6 +1,8 @@
 import { computeNormalizedWaistSize } from "./bra-size";
 
-export const useNormalizedWaistSize = (breastSize: number) => {
+export const useNormalizedWaistSize = (
+  breastSize: number
+): [boolean, string] => {
   let hasError = false;
   let normalizedWaistSize = "";
   try {

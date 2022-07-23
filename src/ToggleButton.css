@@ -1,6 +1,7 @@
 .ToggleButton {
     display: flex;
     justify-content: center;
+    border-bottom: 2px solid;
 }
 .ToggleButton_button {
     display: flex;
@@ -13,6 +14,14 @@
     flex: 1 1 50%;
 
     font-size: 1.3rem;
+
+    /* collapse borders with container */
+    position: relative;
+    bottom: -2px;
+    /* Reverse colors for unselected item */
+    background: var(--text-color);
+    color: var(--background-color);
+    border-color: transparent transparent var(--text-color) transparent;
 }
 .ToggleButton_button:first-child {
     margin-right: 5px;
@@ -21,8 +30,12 @@
     margin-left: 5px;
 }
 .ToggleButton_button--is-active {
-    background: var(--text-color);
-    color: var(--background-color);
+    background: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--text-color);
+    border-bottom: none;;
+    font-weight: bold;
+    box-shadow: none;
 }
 .ToggleButton_icon {
     padding-right: 10px;

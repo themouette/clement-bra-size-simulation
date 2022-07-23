@@ -26,9 +26,18 @@ export const AsymetricChestForm: React.FunctionComponent<
     useNormalizedWaistSize(breastSize);
 
   return (
-    <Result>
-      {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
-      {hasLeftCupSizeError ? "Bonnet inconnu" : leftCupSize}
+    <Result
+      hasError={
+        hasRightCupSizeError ||
+        hasLeftCupSizeError ||
+        hasNormalizedWaistSizeError
+      }
+      hasValue={
+        breastSize > 50 && rightHalfChestSize > 10 && leftHalfChestSize > 10
+      }
+    >
+      {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}{" "}
+      {hasLeftCupSizeError ? "Bonnet inconnu" : leftCupSize}{" "}
       {hasRightCupSizeError ? "Bonnet inconnu" : rightCupSize}
     </Result>
   );

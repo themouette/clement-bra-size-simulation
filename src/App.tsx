@@ -20,6 +20,7 @@ function App(_: AppProps) {
         label="Votre tour de buste"
         value={appState.breastSize}
         suffix="cm"
+        isOneLine
         onChange={appStateActions.setBreastSize}
       />
       <p className={`${BLOCK}_help-text`}>

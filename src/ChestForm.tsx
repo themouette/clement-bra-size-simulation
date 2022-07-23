@@ -21,8 +21,11 @@ export const ChestForm: React.FunctionComponent<ChestFormProps> = ({
     useNormalizedWaistSize(breastSize);
 
   return (
-    <Result>
-      {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}
+    <Result
+      hasError={hasCupSizeError || hasNormalizedWaistSizeError}
+      hasValue={breastSize > 50 && chestSize > 50}
+    >
+      {hasNormalizedWaistSizeError ? "Taille inconnue" : normalizedWaistSize}{" "}
       {hasCupSizeError ? "Bonnet inconnu" : cupSize}
     </Result>
   );

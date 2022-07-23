@@ -1,16 +1,25 @@
+.InputNumber_one-line-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
 .InputNumber, .InputNumber input {
     font-size: 1.5rem;
 }
-.InputNumber .InputNumber_lqbel {
-    display: block;
+.InputNumber .InputNumber_label {
+    flex: 1 1 100%;
 }
 .InputNumber .InputNumber_input-container {
     display: flex;
     align-items: baseline;
 }
-.InputNumber .InputNumber_input {
+/* A wrapper is needed to allow the input to shrink */
+.InputNumber .InputNumber_input-wrapper {
     flex: 1 1 auto;
+}
+.InputNumber .InputNumber_input-wrapper input {
     min-width: 10px;
+    width: 100%;
     padding: 10px;
 }
 .InputNumber .InputNumber_input-suffix {
@@ -21,4 +30,19 @@
 .InputNumber .InputNumber_help-text {
     margin: 0;
     padding: 0;
+}
+
+/*
+ * One line overrides
+ * only apply when screen size is lage enough
+ */
+@media only screen and (min-width : 380px) {
+    .InputNumber .InputNumber_one-line-wrapper--is-one-line {
+        flex-direction: row;
+    }
+    .InputNumber .InputNumber_label--is-one-line {
+        white-space: nowrap;
+        flex: 0 1 auto;
+        padding-right: 1rem;
+    }
 }

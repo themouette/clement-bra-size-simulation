@@ -8,7 +8,7 @@
 }
 
 .App_cup-size-form {
-    border-width: 2px;
+    border-width: 0 2px 2px 2px;
     border-style: solid;
     padding: 10px;
 }

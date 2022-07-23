@@ -5,7 +5,10 @@ export const useCupSize = ({
   isAsymetric,
   breastSize,
   chestSize,
-}: Pick<AppState, "isAsymetric" | "breastSize" | "chestSize">) => {
+}: Pick<AppState, "isAsymetric" | "breastSize" | "chestSize">): [
+  boolean,
+  string
+] => {
   let hasError = false;
   let cupSize = "";
   try {
