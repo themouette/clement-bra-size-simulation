@@ -63,22 +63,13 @@ const cupSizesDefinition: CupSizeDefinition = {
 };
 
 const normalizedBreastSizeDefinition = [
-  { min: 63, max: 67, size: "80" },
-  { min: 67, max: 72, size: "85" },
-  { min: 72, max: 77, size: "90" },
-  { min: 77, max: 82, size: "95" },
-  { min: 82, max: 87, size: "100" },
-  { min: 87, max: 92, size: "105" },
-  { min: 92, max: 97, size: "110" },
-];
-
-const normalizedPantSizeDefinition = [
-  { min: 84, max: 89, size: "34" },
-  { min: 89, max: 93, size: "36" },
-  { min: 93, max: 97, size: "38" },
-  { min: 97, max: 101, size: "40" },
-  { min: 101, max: 105, size: "42" },
-  { min: 105, max: 109, size: "44" },
+  { min: 63, max: 68, size: "80" },
+  { min: 68, max: 73, size: "85" },
+  { min: 73, max: 78, size: "90" },
+  { min: 78, max: 83, size: "95" },
+  { min: 83, max: 88, size: "100" },
+  { min: 88, max: 93, size: "105" },
+  { min: 93, max: 98, size: "110" },
 ];
 
 class OutOfBoundCupSizeError extends Error {
@@ -125,15 +116,4 @@ export const computeNormalizedWaistSize = (waistSize: number) => {
   }
 
   return normalizedWaistSize.size;
-};
-
-export const computeNormalizedPantSize = (waistSize: number) => {
-  const normalizedPantSize = normalizedPantSizeDefinition.find(
-    ({ min, max }) => waistSize < max && waistSize >= min
-  );
-  if (!normalizedPantSize) {
-    throw new OutOfBoundCupSizeError();
-  }
-
-  return normalizedPantSize.size;
 };
