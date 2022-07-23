@@ -9,7 +9,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App
+      imageBraUrl="./explanation-bra.png"
+      imagePantUrl="./explanation-pant.png"
+      iconBraUrl="./icon-bra.png"
+      iconPantUrl="./icon-pant.png"
+    />
   </React.StrictMode>
 );
 

@@ -1,33 +1,40 @@
 import { UnderwareType } from "./lib/types";
+import "./UnderwareTypeSelector.css";
 
 export interface UnderwareTypeSelectorProps {
   underwareType?: UnderwareType;
   setUnderwareType: (newType?: UnderwareType) => void;
+  iconBraUrl?: string;
+  iconPantUrl?: string;
 }
 
-const selectedProp = (isSelected: boolean) =>
-  isSelected
-    ? {
-        style: { borderStyle: "inset" },
-      }
-    : null;
+const BLOCK = "UnderwareTypeSelector";
+
+const activeClassName = (isActive: boolean) =>
+  isActive ? `${BLOCK}_button--is-active` : "";
 
 export const UnderwareTypeSelector: React.FunctionComponent<
   UnderwareTypeSelectorProps
-> = ({ underwareType, setUnderwareType }) => {
+> = ({ underwareType, setUnderwareType, iconBraUrl, iconPantUrl }) => {
   return (
-    <div>
+    <div className={BLOCK}>
       <button
-        onClick={() => setUnderwareType("pants")}
-        {...selectedProp(underwareType === "pants")}
+        className={`${BLOCK}_button ${activeClassName(
+          underwareType === "bra"
+        )}`}
+        onClick={() => setUnderwareType("bra")}
       >
-        Cullotte/Tanga
+        <img src={iconBraUrl} alt="" className={`${BLOCK}_icon`} />
+        Soutien-gorge
       </button>
       <button
-        onClick={() => setUnderwareType("bra")}
-        {...selectedProp(underwareType === "bra")}
+        className={`${BLOCK}_button ${activeClassName(
+          underwareType === "pants"
+        )}`}
+        onClick={() => setUnderwareType("pants")}
       >
-        Soutien gorge
+        <img src={iconPantUrl} alt="" className={`${BLOCK}_icon`} />
+        Cullotte & Tanga
       </button>
     </div>
   );

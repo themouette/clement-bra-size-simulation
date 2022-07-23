@@ -5,4 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  background: #d1d1f8;
+  border-color: #fff;
+}
+input[type=number], button {
+    background: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+    color: #fff;
+}
+html * {
+  box-sizing: border-box;
 }

@@ -1,0 +1,20 @@
+.InputNumber .InputNumber_lqbel {
+    display: block;
+}
+.InputNumber .InputNumber_input-container {
+    display: flex;
+}
+.InputNumber .InputNumber_input {
+    flex: 1 1 auto;
+    min-width: 10px;
+    padding: 2px;
+}
+.InputNumber .InputNumber_input-suffix {
+    flex: 0 0 auto;
+    padding-left: 1rem;
+    font-weight: bold;
+}
+.InputNumber .InputNumber_help-text {
+    margin: 0;
+    padding: 0;
+}

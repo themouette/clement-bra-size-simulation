@@ -1,0 +1,21 @@
+.UnderwareTypeSelector {
+    display: flex;
+    justify-content: center;
+}
+.UnderwareTypeSelector_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: transparent;
+    font-size: 1.3rem;
+    border-width: 2px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.UnderwareTypeSelector_button--is-active { }
+.UnderwareTypeSelector_icon {
+    padding-right: 10px;
+    align-self: justify;
+    height: 2rem;
+}

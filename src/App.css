@@ -1,3 +1,30 @@
 .App {
     padding: 16px;
 }
+
+.App_image-header {
+    margin: auto;
+    max-width: 250px;
+    display: block;
+    width: 100%;
+}
+
+.App_cup-size-form {
+    border-width: 2px;
+    border-style: solid;
+    padding: 10px;
+}
+
+.App_cup-grid {
+    display: flex;
+}
+.App_cup-grid-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 5px;
+}
+
+.App_help-text {
+    font-size: .7rem;
+    font-style: italic;
+}
