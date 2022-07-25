@@ -4,40 +4,40 @@ export interface AppState {
   /** Does customer have asymetric chest? */
   isAsymetric: boolean;
   /** Customer waist size. This is the full size */
-  breastSize: number;
+  breastSize: number | undefined;
   /**
    * Customer chest size.
    * Only for symetric chests
    */
-  chestSize: number;
+  chestSize: number | undefined;
   /**
    * Customer left chest half size.
    * Only for asymetric chests
    */
-  leftHalfChestSize: number;
+  leftHalfChestSize: number | undefined;
   /**
    * Customer right chest half size.
    * Only for asymetric chests
    */
-  rightHalfChestSize: number;
+  rightHalfChestSize: number | undefined;
 }
 
 export interface AppStateActions {
   setAppState: (s: AppState) => void;
   toggleIsAsymetric: () => void;
-  setBreastSize: (size: number) => void;
-  setChestSize: (size: number) => void;
-  setLeftHalfChestSize: (size: number) => void;
-  setRightHalfChestSize: (size: number) => void;
+  setBreastSize: (size: number | undefined) => void;
+  setChestSize: (size: number | undefined) => void;
+  setLeftHalfChestSize: (size: number | undefined) => void;
+  setRightHalfChestSize: (size: number | undefined) => void;
 }
 
 export const useAppState = (): [AppState, AppStateActions] => {
   const [appState, setAppState] = useState<AppState>({
     isAsymetric: false,
-    breastSize: 80,
-    chestSize: 93,
-    leftHalfChestSize: 46,
-    rightHalfChestSize: 48,
+    breastSize: undefined,
+    chestSize: undefined,
+    leftHalfChestSize: undefined,
+    rightHalfChestSize: undefined,
   });
 
   return [

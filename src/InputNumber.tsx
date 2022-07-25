@@ -5,15 +5,18 @@ export interface InputNumberProps {
   /** input id */
   id: string;
   label: string;
-  value: number;
+  value: number | undefined;
   error?: string;
   helpText?: string;
   suffix?: string;
   isOneLine?: boolean;
-  onChange: (value: number) => void;
+  onChange: (value: number | undefined) => void;
 }
 
-const parseNumberInput = (value: string) => parseFloat(value.replace(",", "."));
+const parseNumberInput = (value: string) => {
+  const number = parseFloat(value.replace(",", "."));
+  return Number.isNaN(number) ? undefined : number;
+};
 const BLOCK = "InputNumber";
 
 export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
@@ -44,7 +47,7 @@ export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
           <div className={`${BLOCK}_input-wrapper`}>
             <input
               type="number"
-              value={value}
+              value={Number.isNaN(value) || !value ? undefined : value}
               onChange={({ target: { value } }) =>
                 onChange(parseNumberInput(value))
               }

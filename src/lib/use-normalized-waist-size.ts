@@ -1,7 +1,7 @@
 import { computeNormalizedWaistSize } from "./bra-size";
 
 export const useNormalizedWaistSize = (
-  breastSize: number
+  breastSize: number | undefined
 ): [boolean, string] => {
   let hasError = false;
   let normalizedWaistSize = "";

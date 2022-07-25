@@ -82,13 +82,16 @@ class OutOfBoundCupSizeError extends Error {
 }
 
 export const computeAsymetricCupSize = (
-  waistSize: number,
-  chestSize: number
+  waistSize: number | undefined,
+  chestSize: number | undefined
 ) => {
-  return computeCupSize(waistSize, chestSize * 2);
+  return computeCupSize(waistSize, (chestSize || 0) * 2);
 };
 
-export const computeCupSize = (waistSize: number, chestSize: number) => {
+export const computeCupSize = (
+  waistSize: number | undefined,
+  chestSize: number | undefined
+) => {
   const normalizedWaistSize = computeNormalizedWaistSize(waistSize);
   const possibleCupSizes = cupSizesDefinition[normalizedWaistSize];
 
@@ -98,7 +101,7 @@ export const computeCupSize = (waistSize: number, chestSize: number) => {
 
   // For chest sizes
   const cupSize = possibleCupSizes.find(
-    ({ min, max }) => chestSize < max && chestSize >= min
+    ({ min, max }) => (chestSize || 0) < max && (chestSize || 0) >= min
   );
   if (!cupSize) {
     throw new OutOfBoundCupSizeError();
@@ -107,9 +110,9 @@ export const computeCupSize = (waistSize: number, chestSize: number) => {
   return cupSize.letter;
 };
 
-export const computeNormalizedWaistSize = (waistSize: number) => {
+export const computeNormalizedWaistSize = (waistSize: number | undefined) => {
   const normalizedWaistSize = normalizedBreastSizeDefinition.find(
-    ({ min, max }) => waistSize < max && waistSize >= min
+    ({ min, max }) => (waistSize || 0) < max && (waistSize || 0) >= min
   );
   if (!normalizedWaistSize) {
     throw new OutOfBoundCupSizeError();
