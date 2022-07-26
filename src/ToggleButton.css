@@ -18,6 +18,7 @@
     /* collapse borders with container */
     position: relative;
     bottom: -2px;
+    margin: 0; /* required for Safari */
     /* Reverse colors for unselected item */
     background: var(--text-color);
     color: var(--background-color);
