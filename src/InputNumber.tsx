@@ -15,7 +15,6 @@ export interface InputNumberProps {
 
 const parseNumberInput = (value: string) => {
   const number = parseFloat(value.replace(",", "."));
-  console.log({ value, replacedValue: value.replace(",", "."), number });
   return Number.isNaN(number) ? undefined : number;
 };
 
@@ -54,10 +53,8 @@ export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
     // If this is not a number nor a special key
     if (event.key.length === 1 && !/\d/.test(event.key)) {
       event.preventDefault();
-      console.log("prevent", event.key);
     }
   };
-  console.log({ valueStr });
 
   const onChangeCallback: React.ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
