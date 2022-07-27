@@ -15,8 +15,16 @@ export interface InputNumberProps {
 
 const parseNumberInput = (value: string) => {
   const number = parseFloat(value.replace(",", "."));
+  console.log({ value, replacedValue: value.replace(",", "."), number });
   return Number.isNaN(number) ? undefined : number;
 };
+
+function whatDecimalSeparator() {
+  const n = 1.1;
+  return n.toLocaleString().substring(1, 2);
+}
+const decimalSeparator = whatDecimalSeparator();
+
 const BLOCK = "InputNumber";
 
 export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
@@ -28,6 +36,35 @@ export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
   isOneLine = false,
   onChange,
 }) => {
+  const [valueStr, setValueStr] = React.useState(value ? `${value}` : "");
+
+  const interceptDot: React.KeyboardEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    // Intercept dot and comma
+    const interceptedKeys = [".", ","];
+    if (interceptedKeys.includes(event.key)) {
+      event.preventDefault();
+      setValueStr((previous) => {
+        return previous.includes(decimalSeparator)
+          ? previous
+          : `${previous}${decimalSeparator}`;
+      });
+    }
+    // If this is not a number nor a special key
+    if (event.key.length === 1 && !/\d/.test(event.key)) {
+      event.preventDefault();
+      console.log("prevent", event.key);
+    }
+  };
+  console.log({ valueStr });
+
+  const onChangeCallback: React.ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => {
+    setValueStr(value);
+    onChange(parseNumberInput(value));
+  };
   return (
     <div className={BLOCK}>
       <div
@@ -46,11 +83,11 @@ export const InputNumber: React.FunctionComponent<InputNumberProps> = ({
         <div className={`${BLOCK}_input-container`}>
           <div className={`${BLOCK}_input-wrapper`}>
             <input
-              type="number"
-              value={Number.isNaN(value) || !value ? undefined : value}
-              onChange={({ target: { value } }) =>
-                onChange(parseNumberInput(value))
-              }
+              type="text"
+              inputMode="numeric"
+              value={valueStr}
+              onKeyDown={interceptDot}
+              onChange={onChangeCallback}
             />
           </div>
           {suffix && <span className={`${BLOCK}_input-suffix`}>{suffix}</span>}

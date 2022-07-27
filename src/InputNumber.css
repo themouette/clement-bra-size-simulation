@@ -24,6 +24,9 @@
     min-width: 10px;
     width: 100%;
     padding: 10px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 .InputNumber .InputNumber_input-suffix {
     flex: 0 0 auto;
