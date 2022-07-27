@@ -36,7 +36,7 @@ export const AsymetricChestForm: React.FunctionComponent<
         !!breastSize &&
         !!rightHalfChestSize &&
         !!leftHalfChestSize &&
-        breastSize > 50 &&
+        breastSize > 10 &&
         rightHalfChestSize > 10 &&
         leftHalfChestSize > 10
       }
