@@ -78,10 +78,10 @@ const symetricCupSizesDefinition: CupSizeDefinition = {
   ],
   "90": [
     { min: 80, max: 87, letter: "A" },
-    { min: 87, max: 89, letter: "B" },
-    { min: 89, max: 93, letter: "C" },
-    { min: 93, max: 95, letter: "D" },
-    { min: 95, max: 99, letter: "E" },
+    { min: 87, max: 90, letter: "B" },
+    { min: 90, max: 93, letter: "C" },
+    { min: 93, max: 96, letter: "D" },
+    { min: 96, max: 99, letter: "E" },
   ],
   "95": [
     { min: 85, max: 92, letter: "A" },
